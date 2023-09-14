@@ -18,9 +18,8 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React. love foodhobo
         </a>
-        <a>Love Foodhobo</a>
       </header>
     </div>
   );
