@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "description": "PWA 2 Extension",
   "browser_action": {
-    "default_popup": "embedder.html",
+    "default_popup": "index.html",
     "default_title": "PWA 2 Extension"
   },
   "icons": [
