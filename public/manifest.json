@@ -1,6 +1,17 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "PWA",
+  "name": "PWA 2 Extension",
+  "background_color": "#039be5",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "theme_color": "#039be5",
+  "Version": "1.0.0",
+  "description": "PWA 2 Extension",
+  "browser_action": {
+    "default_popup": "embedder.html",
+    "default_title": "PWA 2 Extension"
+  },
   "icons": [
     {
       "src": "favicon.ico",
@@ -17,9 +28,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
