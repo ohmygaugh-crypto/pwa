@@ -6,7 +6,7 @@
   "scope": "/",
   "start_url": "/",
   "theme_color": "#039be5",
-  "Version": "1.0.0",
+  "version": "1.0.0",
   "description": "PWA 2 Extension",
   "browser_action": {
     "default_popup": "embedder.html",
