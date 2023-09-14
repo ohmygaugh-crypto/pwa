@@ -1,17 +1,6 @@
 {
   "short_name": "PWA",
   "name": "PWA 2 Extension",
-  "background_color": "#039be5",
-  "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
-  "theme_color": "#039be5",
-  "version": "1.0.0",
-  "description": "PWA 2 Extension",
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_title": "PWA 2 Extension"
-  },
   "icons": [
     {
       "src": "favicon.ico",
@@ -28,5 +17,12 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ]
+  ],
+  "background_color": "#039be5",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": ".",
+  "theme_color": "#039be5",
+  "version": "1.0.0",
+  "description": "PWA 2 Extension"
 }
