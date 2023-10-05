@@ -25,10 +25,10 @@
         "name": "Shortcut Name",
         "short_name": "ShortcutShortName",
         "description": "Description of the shortcut.",
-        "url": "/path-to-shortcut-url",
+        "url": "/",
         "icons": [
           {
-            "src": "path-to-shortcut-icon.png",
+            "src": "react-pwa-ts/public/logo192.png",
             "sizes": "96x96",
             "type": "image/png"
           }
