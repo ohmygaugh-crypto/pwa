@@ -1,29 +1,36 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import ShareButton from './components/ShareButton';
+import ShareTargetComponent from './components/ShareTargetComponent'; // Importing the ShareTargetComponent
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      <SearchBar />
-      <ShareButton />
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React. love foodhobo
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <SearchBar />
+          <ShareButton />
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.tsx</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React. love foodhobo
+          </a>
+        </header>
+
+        {/* Share target route */}
+        <Route path="/share-target/" component={ShareTargetComponent} />
+      </div>
+    </Router>
   );
 }
 
