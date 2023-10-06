@@ -1,7 +1,7 @@
-import { extractSharedData } from '../utils/shareUtils';
+import { ExtractSharedData } from '../utils/shareUtils';
 
 const ShareTargetComponent: React.FC = () => {
-  const sharedData = extractSharedData();
+  const sharedData = ExtractSharedData();
 
   // Use optional chaining and provide default/fallback values
   const title = sharedData?.title ?? 'No Title Provided';

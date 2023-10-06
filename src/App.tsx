@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import SearchBar from './components/SearchBar';
@@ -28,10 +28,16 @@ function App() {
         </header>
 
         {/* Share target route */}
-        <Route path="/share-target/" component={ShareTargetComponent} />
+        <Routes>
+        <Route path="/share-target" element={<ShareTargetComponent />} /> 
+        </Routes>
       </div>
     </Router>
   );
 }
 
 export default App;
+
+
+
+//render={() => <ShareTargetComponent />} at the end of line 31?
