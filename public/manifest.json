@@ -33,7 +33,7 @@
       "url": "/",
       "icons": [
         {
-          "src": "react-pwa-ts/public/logo192.png",
+          "src": "logo192.png",
           "sizes": "96x96",
           "type": "image/png"
         }
