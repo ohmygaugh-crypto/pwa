@@ -5,6 +5,7 @@ import './App.css';
 import SearchBar from './components/SearchBar';
 import ShareButton from './components/ShareButton';
 import ShareTargetComponent from './components/ShareTargetComponent';
+import CookingMode from './components/CookingMode';
 
 function App() {
 
@@ -23,30 +24,36 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <SearchBar />
-          <ShareButton />
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React. love foodhobo
-          </a>
-        </header>
+    <Routes>
+        <Route path="/" element={
+            <div className="App">
+                <header className="App-header">
+                    <SearchBar />
+                    <ShareButton />
+                    <img src={logo} className="App-logo" alt="logo" />
+                    <p>
+                        Edit <code>src/App.tsx</code> and save to reload.
+                    </p>
+                    <a
+                        className="App-link"
+                        href="https://reactjs.org"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Learn React. love foodhobo
+                    </a>
 
-        {/* Share target route */}
-        <Routes>
-          <Route path="/share-target" element={<ShareTargetComponent />} /> 
-        </Routes>
-      </div>
-    </Router>
+                    {/* Button to navigate to Cooking Mode */}
+                    <button onClick={() => window.location.href = "/cooking-mode"}>
+                        Go to Cooking Mode
+                    </button>
+                </header>
+            </div>
+        } />
+        <Route path="/share-target" element={<ShareTargetComponent />} />
+        <Route path="/cooking-mode" element={<CookingMode />} /> {/* New route for Cooking Mode */}
+    </Routes>
+</Router>
   );
 }
 
