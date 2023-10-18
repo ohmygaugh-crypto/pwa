@@ -29,6 +29,7 @@ precacheAndRoute(self.__WB_MANIFEST);
 // https://developers.google.com/web/fundamentals/architecture/app-shell
 const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
 registerRoute(
+  
   // Return false to exempt requests from being fulfilled by index.html.
   ({ request, url }: { request: Request; url: URL }) => {
     // If this isn't a navigation, skip.
@@ -50,6 +51,12 @@ registerRoute(
     // Return true to signal that we want to use the handler.
     return true;
   },
+  createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
+);
+
+// Explicitly handle requests for /cooking-mode
+registerRoute(
+  new RegExp('/cooking-mode$'),
   createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
 );
 
