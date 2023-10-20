@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
@@ -8,6 +8,30 @@ import ShareTargetComponent from './components/ShareTargetComponent';
 import CookingMode from './components/CookingMode';
 
 function App() {
+  const [file, setFile] = useState<File | null>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setFile(event.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async () => {
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+    // Send the file to your backend for processing
+    const response = await fetch('/process-image', {
+        method: 'POST',
+        body: formData
+    });
+    const data = await response.json();
+
+    // Redirect to the results page with the extracted recipe
+    window.location.href = `/results?recipe=${encodeURIComponent(data.recipe)}`;
+  };
+}
 
   useEffect(() => {
     function handleInstallPrompt(e: any) {
@@ -24,41 +48,41 @@ function App() {
 
   return (
     <Router>
-    <Routes>
+      <Routes>
         <Route path="/" element={
-            <div className="App">
-                <header className="App-header">
-                    <SearchBar />
-                    <ShareButton />
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
-                    </p>
-                    <a
-                        className="App-link"
-                        href="https://reactjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Learn React. love foodhobo
-                    </a>
+          <div className="App">
+            <header className="App-header">
+              <SearchBar />
+              <ShareButton />
+              <img src={logo} className="App-logo" alt="logo" />
+              <p>
+                Edit <code>src/App.tsx</code> and save to reload.
+              </p>
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React. love foodhobo
+              </a>
 
-                    {/* Button to navigate to Cooking Mode */}
-                    <button onClick={() => window.location.href = "/cooking-mode"}>
-                        Go to Cooking Mode
-                    </button>
-                </header>
-            </div>
+              {/* File Upload */}
+              <input type="file" onChange={handleFileChange} />
+              <button onClick={handleSubmit}>Upload</button>
+
+              {/* Button to navigate to Cooking Mode */}
+              <button onClick={() => window.location.href = "/cooking-mode"}>
+                Go to Cooking Mode
+              </button>
+            </header>
+          </div>
         } />
         <Route path="/share-target" element={<ShareTargetComponent />} />
         <Route path="/cooking-mode" element={<CookingMode />} /> {/* New route for Cooking Mode */}
-    </Routes>
-</Router>
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
-
-
-//render={() => <ShareTargetComponent />} at the end of line 31?
