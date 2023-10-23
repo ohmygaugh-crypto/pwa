@@ -23,12 +23,38 @@ def process_image():
     recipe_text = pytesseract.image_to_string(image)
 
     # Format with OpenAI
-    response = openai.Completion.create(
+    response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        prompt=f"Extract and format the recipe from the following text:\n\n{recipe_text}",
-        max_tokens=500
+        messages=[
+            {
+                "role": "system",
+                "content": "Your are a helpful assistant"
+            },
+            {
+                "role":"user",
+                "content": f"""
+                Using the provided text, extract and format the recipe in the following manner:
+                 1. Clearly distinguish between preparation steps and cooking steps.
+                 2. Use emojis to make each step visually clear.
+                 3. Bold crucial cooking technique phrases like 'skin side down', 'medium-high', and any temperature control instructions.
+                 4. Italicize any unconventional wisdom or clever cooking techniques. 
+                 Text for extraction:
+                 {recipe_text}
+                 """
+            }
+        ],
+        max_tokens=1000
     )
-    formatted_recipe = response.choices[0].text.strip()
+    # Print the response to understand its structure
+    print(response)
+
+    # Get the 'assistant' message from the response
+    assistant_message = response['choices'][0]['message']
+    # If an 'assistant' message is found, get its content
+    if assistant_message['role'] == 'assistant':
+        formatted_recipe = assistant_message['content'].strip()
+    else:
+        formatted_recipe = "No recipe found."   
 
     return jsonify({'recipe': formatted_recipe})
 

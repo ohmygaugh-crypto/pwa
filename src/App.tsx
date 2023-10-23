@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar';
 import ShareButton from './components/ShareButton';
 import ShareTargetComponent from './components/ShareTargetComponent';
 import CookingMode from './components/CookingMode';
+import Results from './components/Results';
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
@@ -52,8 +53,17 @@ function App() {
         <Route path="/" element={
           <div className="App">
             <header className="App-header">
-              <SearchBar />
               <ShareButton />
+              <SearchBar />
+              
+
+              {/* File Upload */}
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <input type="file" onChange={handleFileChange} />
+                <button onClick={handleSubmit}>Convert Upload</button>
+              </div>
+
+              
               <img src={logo} className="App-logo" alt="logo" />
               <p>
                 Edit <code>src/App.tsx</code> and save to reload.
@@ -67,10 +77,6 @@ function App() {
                 Learn React. love foodhobo
               </a>
 
-              {/* File Upload */}
-              <input type="file" onChange={handleFileChange} />
-              <button onClick={handleSubmit}>Upload</button>
-
               {/* Button to navigate to Cooking Mode */}
               <button onClick={() => window.location.href = "/cooking-mode"}>
                 Go to Cooking Mode
@@ -78,6 +84,7 @@ function App() {
             </header>
           </div>
         } />
+        <Route path="/results" element={<Results />} />
         <Route path="/share-target" element={<ShareTargetComponent />} />
         <Route path="/cooking-mode" element={<CookingMode />} /> {/* New route for Cooking Mode */}
       </Routes>
