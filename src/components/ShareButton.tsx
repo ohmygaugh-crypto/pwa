@@ -22,7 +22,7 @@ const ShareButton: React.FC = () => {
   };
 
   return (
-    <button onClick={handleShare}>Share</button>
+    <button onClick={handleShare}>Share/Airdrop</button>
   );
 };
 

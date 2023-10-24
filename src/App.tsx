@@ -7,6 +7,7 @@ import ShareButton from './components/ShareButton';
 import ShareTargetComponent from './components/ShareTargetComponent';
 import CookingMode from './components/CookingMode';
 import Results from './components/Results';
+import RecipeList from './components/RecipeList';  // Import RecipeList
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
@@ -56,6 +57,7 @@ function App() {
               <ShareButton />
               <SearchBar />
               
+              
 
               {/* File Upload */}
               <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -63,7 +65,8 @@ function App() {
                 <button onClick={handleSubmit}>Convert Upload</button>
               </div>
 
-              
+              <RecipeList />  {/* Add this line */}
+
               <img src={logo} className="App-logo" alt="logo" />
               <p>
                 Edit <code>src/App.tsx</code> and save to reload.
