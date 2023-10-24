@@ -28,16 +28,16 @@ def process_image():
         messages=[
             {
                 "role": "system",
-                "content": "Your are a helpful assistant"
+                "content": "Your are a helpful assistant. You're aim is to enhance the mobile phone experience for the people who glance at recipes on their smartphone while cooking. They want to enjoy a more managable visual experience by making it visually less cumbersome than the input they will share with you. Your output is also to display the recipe in a manner that is helpfully more digestable to read in a hurry. Utilizing emoji where it can illustrate the actions in a recipe is an ideal aid, but only where it is purposefully/thoughtfully done."
             },
             {
                 "role":"user",
                 "content": f"""
                 Using the provided text, extract and format the recipe in the following manner:
-                 1. Clearly distinguish between preparation steps and cooking steps.
-                 2. Use emojis to make each step visually clear.
-                 3. Bold crucial cooking technique phrases like 'skin side down', 'medium-high', and any temperature control instructions.
-                 4. Italicize any unconventional wisdom or clever cooking techniques. 
+                 1. Clearly distinguish between preparation steps and cooking steps in the instrutions. Use Emoji's within the sentence whenever applicable.
+                 2. Utilize recipe related emojis to make reading each step more visually evident which item you are supposed to touch/use.
+                 3. Bold all crucial cooking technique phrases regarding food orientation that effects desired outcome like: 'skin side down'. Do this also for: temperature control instructions like: 'medium-high'. Do this for: that requires subtle finesse in the recipe's cooking technique that shouldn't go unnoticed.
+                 4. Italicize any unconventional wisdom or clever cooking techniques denoted by the author. 
                  Text for extraction:
                  {recipe_text}
                  """
