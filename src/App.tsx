@@ -24,7 +24,7 @@ function App() {
       formData.append('file', file);
 
     // Send the file to your backend for processing
-    const response = await fetch('/process-image', {
+    const response = await fetch('https://flaskserverpy-948e2781e8db.herokuapp.com/process-image', {
         method: 'POST',
         body: formData
     });
