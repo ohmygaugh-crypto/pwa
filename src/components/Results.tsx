@@ -23,10 +23,25 @@ function Results() {
         }
     }, [recipe]);
 
+    // Styling for the container
+    const containerStyle: React.CSSProperties = {
+        width: '100%',
+        maxWidth: '100vw', // Ensure the container doesn't exceed the viewport width
+        margin: '0 auto',
+        padding: '1rem',
+        boxSizing: 'border-box', // Include padding and border in the element's total width and height
+        overflowX: 'hidden' // Hide horizontal overflow
+    };
+
+    const preStyle: React.CSSProperties = {
+        whiteSpace: 'pre-wrap', // Allows the text to wrap
+        wordWrap: 'break-word' // Breaks the line at arbitrary points if necessary
+    };
+
     return (
-        <div>
+        <div style={containerStyle}>
             <h1>Extracted Recipe</h1>
-            <pre>{decodeURIComponent(recipe)}</pre>
+            <pre style={preStyle}>{decodeURIComponent(recipe)}</pre>
             <Link to="/">Go back to home</Link>  {/* Add this line */}
         </div>
     );

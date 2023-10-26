@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { MagicMotion } from 'react-magic-motion';
+import { useNavigate } from 'react-router-dom';
+
 
 function RecipeListItem({ title, handleDelete }: { title: string; handleDelete: (title: string) => void }) {
+    const navigate = useNavigate(); // <-- Use the useHistory hook
+
+    const navigateToRecipe = () => {
+        navigate(`/results?recipe=${encodeURIComponent(localStorage.getItem(title) || '')}`);
+    };
+    
+    
     return (
         <li>
-            {title}
+            <div onClick={navigateToRecipe} style={{ cursor: 'pointer' }}> {/* <-- Add the onClick event here */}
+                {title}
+            </div>
             <button onClick={() => handleDelete(title)}>Delete</button>
         </li>
     );
@@ -40,3 +51,6 @@ function RecipeList() {
 }
 
 export default RecipeList;
+
+
+//clicking a instruction step on this page highlights the contents in a green box as well as highlighting the measurements within the ingredients section!

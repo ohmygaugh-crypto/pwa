@@ -67,7 +67,7 @@ function App() {
               </div>
 
               <RecipeList />  
-              
+              <TestComponent />
 
               <img src={logo} className="App-logo" alt="logo" />
               <p>
