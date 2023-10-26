@@ -32,8 +32,8 @@ function RecipeList() {
     
     const handleDelete = (titleToDelete: string) => {
         localStorage.removeItem(titleToDelete);
-        const keys = Object.keys(localStorage);
-        const titles = keys.filter(key => key !== 'loglevel:webpack-dev-server');
+        //const keys = Object.keys(localStorage); {/* commented out to fix netlify build typescript error*/}
+        //const titles = keys.filter(key => key !== 'loglevel:webpack-dev-server');  {/* commented out to fix netlify build typescript error*/}
         setRecipeTitles(prevTitles => prevTitles.filter(title => title !== titleToDelete));
     };
 
