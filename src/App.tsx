@@ -8,6 +8,7 @@ import ShareTargetComponent from './components/ShareTargetComponent';
 import CookingMode from './components/CookingMode';
 import Results from './components/Results';
 import RecipeList from './components/RecipeList';  // Import RecipeList
+import TestComponent from './components/TestComponent';
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
@@ -65,7 +66,8 @@ function App() {
                 <button onClick={handleSubmit}>Convert Upload</button>
               </div>
 
-              <RecipeList />  {/* Add this line */}
+              <RecipeList />  
+              
 
               <img src={logo} className="App-logo" alt="logo" />
               <p>

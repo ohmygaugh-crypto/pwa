@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { MagicMotion } from 'react-magic-motion';
+
+function RecipeListItem({ title, handleDelete }: { title: string; handleDelete: (title: string) => void }) {
+    return (
+        <li>
+            {title}
+            <button onClick={() => handleDelete(title)}>Delete</button>
+        </li>
+    );
+}
 
 function RecipeList() {
     const [recipeTitles, setRecipeTitles] = useState<string[]>([]);
@@ -10,28 +20,21 @@ function RecipeList() {
         setRecipeTitles(titles);
     }, []);
     
-    const handleDelete = (title: string) => {
-        // Remove the recipe from local storage
-        localStorage.removeItem(title);
-
-        // Update the list of recipe titles
+    const handleDelete = (titleToDelete: string) => {
+        localStorage.removeItem(titleToDelete);
         const keys = Object.keys(localStorage);
         const titles = keys.filter(key => key !== 'loglevel:webpack-dev-server');
-        setRecipeTitles(titles);
+        setRecipeTitles(prevTitles => prevTitles.filter(title => title !== titleToDelete));
     };
 
     return (
-        <div>
-            <h1>Stored Recipes</h1>
-            {recipeTitles.map(title => (
-                <div key={title}>
-                    <Link to={`/results?recipe=${encodeURIComponent(localStorage.getItem(title) || '')}`}>
-                        {title}
-                    </Link>
-                    <button onClick={() => handleDelete(title)}>Delete</button>  {/* Add this line */}
-                </div>
-            ))}
-        </div>
+        <MagicMotion>
+            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginTop: "1rem" }}>
+                <ul style={{ display: "flex", flexDirection: "column", gap: "0.75rem", overflow: "hidden" }}>
+                    <RecipeListItem key={recipeTitles[0]} title={recipeTitles[0]} handleDelete={handleDelete} />
+                </ul>
+            </div>
+        </MagicMotion>
     );
 }
 
