@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { MagicMotion } from 'react-magic-motion';
 
 function RecipeListItem({ title, handleDelete }: { title: string; handleDelete: (title: string) => void }) {
@@ -31,7 +30,9 @@ function RecipeList() {
         <MagicMotion>
             <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", marginTop: "1rem" }}>
                 <ul style={{ display: "flex", flexDirection: "column", gap: "0.75rem", overflow: "hidden" }}>
-                    <RecipeListItem key={recipeTitles[0]} title={recipeTitles[0]} handleDelete={handleDelete} />
+                    {recipeTitles.map(title => (
+                        <RecipeListItem key={title} title={title} handleDelete={handleDelete} />
+                    ))}
                 </ul>
             </div>
         </MagicMotion>
