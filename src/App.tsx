@@ -31,8 +31,8 @@ function App() {
     });
     const data = await response.json();
 
-    // Redirect to the results page with the extracted recipe
-    window.location.href = `/results?recipe=${encodeURIComponent(data.recipe)}`;
+    // Redirect to the results page with the extracted recipe, but the url sanitized of emojis that cause errors
+    window.location.href = `/results?recipe=${encodeURIComponent(data.sanitized_recipe_for_url)}`;
   };
 }
 
