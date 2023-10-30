@@ -9,11 +9,7 @@ import './Results.css';
 function Results() {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
-    const encodedRecipe = queryParams.get('recipe') || '';
-
-    // Decode the URL-encoded recipe
-    const recipe = decodeURIComponent(encodedRecipe);
-
+    const recipe = queryParams.get('recipe') || '';
 
     // Use the useEffect hook to store the recipe in local storage when the component mounts
     useEffect(() => {
