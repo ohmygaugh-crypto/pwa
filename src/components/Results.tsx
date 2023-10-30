@@ -1,11 +1,19 @@
 // Results.tsx
 import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
+import './Results.css';
+
 
 function Results() {
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
-    const recipe = queryParams.get('recipe') || '';
+    const encodedRecipe = queryParams.get('recipe') || '';
+
+    // Decode the URL-encoded recipe
+    const recipe = decodeURIComponent(encodedRecipe);
+
 
     // Use the useEffect hook to store the recipe in local storage when the component mounts
     useEffect(() => {
@@ -41,8 +49,8 @@ function Results() {
     return (
         <div style={containerStyle}>
             <h1>Extracted Recipe</h1>
-            <pre style={preStyle}>{decodeURIComponent(recipe)}</pre>
-            <Link to="/">Go back to home</Link>  {/* Add this line */}
+            <ReactMarkdown remarkPlugins={[gfm]} children={recipe}></ReactMarkdown>
+            <Link to="/">Go back to home</Link>  
         </div>
     );
 }

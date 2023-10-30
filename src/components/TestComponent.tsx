@@ -54,12 +54,14 @@ function TodoListItem({
 
 export default function TestComponent(): JSX.Element {
     const [todos, setTodos] = useState([
-        { id: crypto.randomUUID(), text: "🐕 Walk the dog" },
-        { id: crypto.randomUUID(), text: "🍔 Eat lunch" },
-        { id: crypto.randomUUID(), text: "📚 Study react" },
-        { id: crypto.randomUUID(), text: "🏀 Play basketball" },
-        { id: crypto.randomUUID(), text: "🔎 Study biology" },
-        { id: crypto.randomUUID(), text: "👟 Buy shoes" },
+        { id: crypto.randomUUID(), text: "📲update UI/UX for interactive recipe results" },
+        { id: crypto.randomUUID(), text: "💄Touch up front page aesthetics" },
+        { id: crypto.randomUUID(), text: "📚Try Harder" },
+        { id: crypto.randomUUID(), text: "📝🤖improve prompt template" },
+        { id: crypto.randomUUID(), text: "💳Add Stripe Paywall/Donate" },
+        { id: crypto.randomUUID(), text: "📧🌐Add Email collection" },
+        { id: crypto.randomUUID(), text: "🔂🚥Conversion button loading animation" },
+        { id: crypto.randomUUID(), text: "🗿Add 3D Avatar👨🏻‍🍳🎮" },
     ]);
 
     const newTodoInput = useRef<HTMLInputElement>(null);
