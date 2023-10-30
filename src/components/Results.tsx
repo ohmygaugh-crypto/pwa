@@ -37,10 +37,7 @@ function Results() {
         overflowX: 'hidden' // Hide horizontal overflow
     };
 
-    const preStyle: React.CSSProperties = {
-        whiteSpace: 'pre-wrap', // Allows the text to wrap
-        wordWrap: 'break-word' // Breaks the line at arbitrary points if necessary
-    };
+    
 
     return (
         <div style={containerStyle}>
