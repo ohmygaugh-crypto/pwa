@@ -54,3 +54,18 @@ workbox-config
   workbox-8d0
   workbox-8d0.map
 index2.tsx
+
+add a newsticker like this? --> https://www.shrinkflation.io/
+
+better:
+https://grocerytracker.ca/
+
+want to help foodhobo be more accurate?
+
+
+
+Also I think I need to adjust the prompting set up to be RAG or whatever the iterative approach is. Zero shot throws too much complexity at the api at once. It would be could to compartmentalize different elements of the recipe sections into varying component stores that can be referenced amongst the rest
+
+such as -->return the recipe as is--> prompt 2: add markdown table and sort ingredients accrodingly(ensure measurements are accurately stated)  ---> prompt 3: add emojis to instructions --> insert emojis inside markdown table where they cross reference the same emoji in ---> prompt 4: whatever gets this thing right ---> prompt 5: suggest cleanup and equipment preparation/purchasing based on what the recipe calls for
+
+remember that when they create their accounts each person will and attirbutes regarding brand name ingredients(sauces only for now) they prefer. They will also state which equipment they have in their inventory. This will autofilter recipes

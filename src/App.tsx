@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import SearchBar from './components/SearchBar';
-import ShareButton from './components/ShareButton';
+import NewsTicker from './components/NewsTicker';
 import ShareTargetComponent from './components/ShareTargetComponent';
 import CookingMode from './components/CookingMode';
 import Results from './components/Results';
 import RecipeList from './components/RecipeList';  // Import RecipeList
 import TestComponent from './components/TestComponent';
+
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
@@ -60,8 +60,8 @@ function App() {
         <Route path="/" element={
           <div className="App">
             <header className="App-header">
-              <ShareButton />
-              <SearchBar />
+              <NewsTicker />
+               
               
               
 
@@ -69,7 +69,7 @@ function App() {
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <input type="file" onChange={handleFileChange} />
                 <button onClick={handleSubmit} disabled={isButtonDisabled}>
-                  Convert Upload
+                  Convert Upload🔄⏳📩
                 </button>
               </div>
 
@@ -78,20 +78,21 @@ function App() {
 
               <img src={logo} className="App-logo" alt="logo" />
               <p>
-                Edit <code>src/App.tsx</code> and save to reload.
+                ❤️‍🔥Love, 
+                foodhobo🍲
               </p>
               <a
                 className="App-link"
-                href="https://reactjs.org"
+                href="https://foodhobo.io/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Learn React. love foodhobo
+                Food Hobo Website
               </a>
 
               {/* Button to navigate to Cooking Mode */}
               <button onClick={() => window.location.href = "/cooking-mode"}>
-                Go to Cooking Mode
+                Go to a random screen
               </button>
             </header>
           </div>
