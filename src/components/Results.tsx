@@ -41,7 +41,7 @@ function Results() {
     
 
     return (
-        <div style={containerStyle}>
+        <div className='results-container' style={containerStyle}>
             <h1>Extracted Recipe</h1>
             <ReactMarkdown remarkPlugins={[gfm]} children={recipe}></ReactMarkdown>
             <Link to="/">Go back to home</Link>  
