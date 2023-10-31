@@ -46,7 +46,7 @@ ocr
 After installing Tesseract and adding it to your PATH, restart your terminal and try running your Python script again. It should now be able to find and use Tesseract.
 
 ---
-Irrelevant files/files that didn't make the cut/learning checkpoints:
+Irrelevant files/files that didn't make the cut/learning checkpoints( i need to ask if i'm missing anything to enable pwa download):
 gptmanifest.json
 workbox-config
   sw.js
