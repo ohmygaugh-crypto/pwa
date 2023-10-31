@@ -12,6 +12,7 @@ import TestComponent from './components/TestComponent';
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -21,6 +22,8 @@ function App() {
 
   const handleSubmit = async () => {
     if (file) {
+      setIsButtonDisabled(true); // Disable the button
+
       const formData = new FormData();
       formData.append('file', file);
 
@@ -33,6 +36,8 @@ function App() {
 
     // Redirect to the results page with the extracted recipe, but the url sanitized of emojis that cause errors
     window.location.href = `/results?recipe=${encodeURIComponent(data.recipe)}`;
+
+    setIsButtonDisabled(false); // Enable button again
   };
 }
 
@@ -63,7 +68,9 @@ function App() {
               {/* File Upload */}
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <input type="file" onChange={handleFileChange} />
-                <button onClick={handleSubmit}>Convert Upload</button>
+                <button onClick={handleSubmit} disabled={isButtonDisabled}>
+                  Convert Upload
+                </button>
               </div>
 
               <RecipeList />  
