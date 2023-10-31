@@ -14,13 +14,14 @@ function Results() {
     // Use the useEffect hook to store the recipe in local storage when the component mounts
     useEffect(() => {
         if (recipe !== '') {
+            // Extract the title from the recipe content
+            const titleMatch = recipe.match(/Title: (.*?)(?= 👨🏻‍🍳|\n|$)/s);
+            const recipeTitle = titleMatch ? titleMatch[1] : `Recipe ${Date.now()}`;
+    
             // Check if the recipe already exists in local storage
             const existingRecipe = Object.values(localStorage).find(value => value === recipe);
-
+    
             if (!existingRecipe) {
-                // If the recipe doesn't exist, generate a unique title for the recipe
-                const recipeTitle = `Recipe ${Date.now()}`;
-
                 // Store the recipe in local storage
                 localStorage.setItem(recipeTitle, recipe);
             }
