@@ -69,3 +69,9 @@ Also I think I need to adjust the prompting set up to be RAG or whatever the ite
 such as -->return the recipe as is--> prompt 2: add markdown table and sort ingredients accrodingly(ensure measurements are accurately stated)  ---> prompt 3: add emojis to instructions --> insert emojis inside markdown table where they cross reference the same emoji in ---> prompt 4: whatever gets this thing right ---> prompt 5: suggest cleanup and equipment preparation/purchasing based on what the recipe calls for
 
 remember that when they create their accounts each person will and attirbutes regarding brand name ingredients(sauces only for now) they prefer. They will also state which equipment they have in their inventory. This will autofilter recipes
+
+https://sbtron.github.io/makeglb/
+
+verify if corrupt here:
+
+https://gltf-viewer.donmccurdy.com/

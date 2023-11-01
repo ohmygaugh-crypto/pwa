@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 import NewsTicker from './components/NewsTicker';
 import ShareTargetComponent from './components/ShareTargetComponent';
@@ -8,6 +7,8 @@ import CookingMode from './components/CookingMode';
 import Results from './components/Results';
 import RecipeList from './components/RecipeList';  // Import RecipeList
 import TestComponent from './components/TestComponent';
+import TestThreeScene from './3d/TestThreeScene';
+import { Container } from '@chakra-ui/react';
 
 
 function App() {
@@ -76,7 +77,10 @@ function App() {
               <RecipeList />  
               <TestComponent />
 
-              <img src={logo} className="App-logo" alt="logo" />
+              <Container maxW="container.md" pt={14}>
+                <TestThreeScene />
+              </Container>
+
               <p>
                 ❤️‍🔥Love, 
                 foodhobo🍲
