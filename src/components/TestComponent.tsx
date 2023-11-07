@@ -62,6 +62,7 @@ export default function TestComponent(): JSX.Element {
         { id: crypto.randomUUID(), text: "📧🌐Add Email collection" },
         { id: crypto.randomUUID(), text: "🔂🚥Conversion button loading animation" },
         { id: crypto.randomUUID(), text: "🗿Add 3D Avatar👨🏻‍🍳🎮" },
+        { id: crypto.randomUUID(), text: "📌accept url-link webshare for pinterest/misc." },
     ]);
 
     const newTodoInput = useRef<HTMLInputElement>(null);

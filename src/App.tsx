@@ -73,14 +73,24 @@ function App() {
                   Convert Upload🔄⏳📩
                 </button>
               </div>
+              
 
               <RecipeList />  
               <TestComponent />
+
 
               <Container maxW="container.md" pt={14}>
                 <TestThreeScene />
               </Container>
 
+              <div>
+                <a href="https://www.buymeacoffee.com/ohmygaugh">
+                  <img 
+                    src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=ohmygaugh&button_colour=f0f0f0&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=FFDD00" 
+                    alt="Buy me a coffee button" 
+                  />
+                </a>
+              </div>
               <p>
                 ❤️‍🔥Love, 
                 foodhobo🍲
