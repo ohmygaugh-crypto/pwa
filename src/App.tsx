@@ -85,7 +85,7 @@ const handleSharedURL = async (url: string) => {
     navigator.serviceWorker.addEventListener('message', (event) => {
       if (event.data && event.data.type === 'SHARE_DATA') {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars 
-        const { title, text, url } = event.data.payload;
+        const { _title, _text, url } = event.data.payload;
         // Perform actions based on the shared data
         // Update the UI or navigate to the specified URL
         // ... do I want to have it but into an omni file format converter which costs credits each time?
