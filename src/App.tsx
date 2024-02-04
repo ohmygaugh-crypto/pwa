@@ -13,7 +13,15 @@ import { Container } from '@chakra-ui/react';
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [sharedURL, setSharedURL] = useState('');
+
+  const handleBrowseBookmarks = () => {
+    window.open('chrome://instead of bookmarks have this point to the url where they can download the browser extension');
+  };
+
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
@@ -39,8 +47,26 @@ function App() {
     window.location.href = `/results?recipe=${encodeURIComponent(data.recipe)}`;
 
     setIsButtonDisabled(false); // Enable button again
-  };
-}
+  } else if (sharedURL) {
+    handleSharedURL(sharedURL);
+  }
+};
+
+const handleSharedURL = async (url: string) => {
+  // Perform necessary actions to send the shared URL to your backend for processing
+  const response = await fetch('https://flaskserverpy-948e2781e8db.herokuapp.com/process-image', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: `url=${encodeURIComponent(url)}`,
+  });
+  const data = await response.json();
+
+  // Redirect to the results page with the extracted recipe, but the URL sanitized of emojis that cause errors
+  window.location.href = `/results?recipe=${encodeURIComponent(data.recipe)}`;
+};
+
 
   useEffect(() => {
     function handleInstallPrompt(e: any) {
@@ -53,6 +79,19 @@ function App() {
     return () => {
       window.removeEventListener('beforeinstallprompt', handleInstallPrompt);
     };
+  }, []);
+
+  useEffect(() => {
+    navigator.serviceWorker.addEventListener('message', (event) => {
+      if (event.data && event.data.type === 'SHARE_DATA') {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars 
+        const { title, text, url } = event.data.payload;
+        // Perform actions based on the shared data
+        // Update the UI or navigate to the specified URL
+        // ... do I want to have it but into an omni file format converter which costs credits each time?
+        handleSharedURL(url); // Call the handleSharedURL function with the shared URL
+      }
+    });
   }, []);
 
   return (
@@ -73,7 +112,12 @@ function App() {
                   Convert Upload🔄⏳📩
                 </button>
               </div>
-              
+
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <button onClick={handleBrowseBookmarks}>
+                Browse Bookmarks 📚
+               </button>
+              </div>
 
               <RecipeList />  
               <TestComponent />
@@ -95,6 +139,7 @@ function App() {
                 ❤️‍🔥Love, 
                 foodhobo🍲
               </p>
+              
               <a
                 className="App-link"
                 href="https://foodhobo.io/"

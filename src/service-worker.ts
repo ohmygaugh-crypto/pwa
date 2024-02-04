@@ -14,6 +14,7 @@ import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 
+
 declare const self: ServiceWorkerGlobalScope;
 
 clientsClaim();
@@ -83,5 +84,14 @@ self.addEventListener('message', (event) => {
     self.skipWaiting();
   }
 });
+
+
+window.addEventListener('load', () => {
+  const urlParams = new
+  URLSearchParams(window.location.search);
+  const title = urlParams.get('title');
+  const text = urlParams.get('text');
+  const url = urlParams.get('url');
+  });
 
 // Any other custom service worker logic can go here.
