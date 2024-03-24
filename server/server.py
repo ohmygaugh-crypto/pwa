@@ -5,6 +5,7 @@ from flask_cors import CORS
 import openai
 import os
 from dotenv import load_dotenv
+from io import BytesIO
 
 
 app = Flask(__name__)
@@ -16,11 +17,21 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
-@app.route('/process-image', methods=['POST'])
-def process_image():
+@app.route('/process', methods=['POST'])
+def process():
     file = request.files.get('file')
-    image = Image.open(file.stream)
-    recipe_text = pytesseract.image_to_string(image)
+    url = request.form.get('url')
+
+    if file:
+        image = Image.open(file.stream)
+        recipe_text = pytesseract.image_to_string(image)
+    elif url:
+        response = requests.get(url)
+        recipe_text = response.text
+    else:
+        return jsonify({'error': 'No file or URL provided'})
+
+
 
     # Format with OpenAI
     response = openai.ChatCompletion.create(
@@ -60,4 +71,6 @@ def process_image():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
+
