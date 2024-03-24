@@ -95,3 +95,29 @@ window.addEventListener('load', () => {
   });
 
 // Any other custom service worker logic can go here.
+let capturedURLs: string[] = [];
+
+   self.addEventListener('fetch', (event) => {
+     const url = new URL(event.request.url);
+     capturedURLs.push(url.href);
+
+      // Log the captured URLs array after each URL is added
+      console.log('Captured URLs:', capturedURLs);
+    });
+
+// This code will ensure that when the new version of the PWA is downloaded, the service worker will clear the old cache and update it with the new assets, ensuring that the PWA syncs with the latest release code. 
+// Place this code inside the service worker file, specifically within the src/service-worker.ts file, at the top level of the file, outside of any existing event listeners or functions.
+// This code listens for the "install" event, and when triggered, it clears the old cache by deleting all existing cache names, allowing the new assets to be cached and synced with the latest release code.
+    self.addEventListener('install', (event) => {
+      event.waitUntil(
+        caches.keys().then((cacheNames) => {
+          return Promise.all(
+            cacheNames.map((cacheName) => {
+              return caches.delete(cacheName);
+            })
+          );
+        })
+      );
+    });
+
+   // notification to reload 
