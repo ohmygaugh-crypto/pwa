@@ -75,3 +75,8 @@ https://sbtron.github.io/makeglb/
 verify if corrupt here:
 
 https://gltf-viewer.donmccurdy.com/
+
+
+.. and ok then what should I expect to happen when I share a url from the browser directly to the installed PWA? Should I expect to log the url being shared to it somewhere? Should I expect to be able to open the PWA and see the url in a list of shared urls?
+
+I could make a list of shared urls that are awaiting to be converted like how the images are converted... that what when you share a recipe to a friend they can convert it themselves? or would it be better to share 

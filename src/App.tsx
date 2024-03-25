@@ -9,6 +9,8 @@ import RecipeList from './components/RecipeList';  // Import RecipeList
 import TestComponent from './components/TestComponent';
 import TestThreeScene from './3d/TestThreeScene';
 import { Container } from '@chakra-ui/react';
+import AcceptURLsharefromBrowser from './components/AcceptURLsharefromBrowser';
+
 
 
 function App() {
@@ -108,6 +110,7 @@ function App() {
               <button onClick={() => window.location.href = "/cooking-mode"}>
                 Go to a random screen
               </button>
+              <AcceptURLsharefromBrowser />
             </header>
           </div>
         } />
