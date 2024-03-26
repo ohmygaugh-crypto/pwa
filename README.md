@@ -80,3 +80,33 @@ https://gltf-viewer.donmccurdy.com/
 .. and ok then what should I expect to happen when I share a url from the browser directly to the installed PWA? Should I expect to log the url being shared to it somewhere? Should I expect to be able to open the PWA and see the url in a list of shared urls?
 
 I could make a list of shared urls that are awaiting to be converted like how the images are converted... that what when you share a recipe to a friend they can convert it themselves? or would it be better to share 
+
+
+OLD:
+https://developer.chrome.com/docs/capabilities/pwa-url-handler
+
+NEW:
+https://github.com/WICG/pwa-url-handler/blob/main/handle_links/explainer.md
+h
+
+Imagine I'm on some recipe website and I want to share the url(@https://natashaskitchen.com/wprm_print/64201 ) of the website to the pwa my phone. I click the search bar, which automatically selects all text in the url, and I click the share button conviently located to the right within the search bar. A list of share targets come up on my phone which include an option to tap my pwa. I tap my pwa.  My pwa launches, but opens a 404 page. What is going on here? What is my pwa expecting to recieve. Tell me from the point of view as an expert in progressive web apps
+
+GET is for fetching data, appending parameters in the URL, ideal for searches. POST, used for updates, sends data securely in the request body, perfect for forms. Each has specific use cases based on security and data size needs.
+
+So I modified the manifest to include the following:
+
+```json
+"action": "/share-target",
+"method": "GET",
+"params": {
+  "text": "description",
+  "url": "link"
+}
+```
+
+
+// Your PWA's main JavaScript code
+// Handle shared data using the URLSearchParams interface
+const url = new URL(document.location);
+const sharedDescription = url.searchParams.get("description");
+const sharedLink = url.searchParams.get("link");
